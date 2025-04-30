@@ -138,6 +138,23 @@ app.post('/delete-cobj/:id', async (req, res) => {
   }
 });
 
+// 404 handler for undefined routes
+app.use((req, res) => {
+  res.status(404).render('error', {
+    title: 'Page Not Found',
+    message: 'The page you are looking for does not exist.'
+  });
+});
+
+// 500 error handler
+app.use((err, req, res, next) => {
+  console.error('Server Error:', err);
+  res.status(500).render('error', {
+    title: 'Server Error',
+    message: 'Something went wrong on our end. Please try again later.'
+  });
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

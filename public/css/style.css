@@ -19,7 +19,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   background-color: #f5f7fa;
   color: var(--dark);
@@ -177,7 +177,8 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 15px 20px;
   text-align: left;
   border-bottom: 1px solid #dee2e6;
@@ -264,25 +265,46 @@ input[type="number"]:focus {
   color: var(--dark);
 }
 
-/* Error page styles */
-.error-message {
+.error-card {
+  margin: 3rem auto;
+  max-width: 600px;
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  padding: 30px;
+  padding: 2rem 1rem;
 }
 
-.error-message svg {
-  margin-bottom: 20px;
+.error-icon {
+  color: #dc3545;
+  margin-bottom: 1.5rem;
 }
 
-.error-text {
-  font-size: 18px;
-  color: #6c757d;
+.error-message {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.error-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
 /* Add subtle animation */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Responsive design */
@@ -292,22 +314,35 @@ input[type="number"]:focus {
     gap: 15px;
     text-align: center;
   }
-  
+
   .card-header {
     flex-direction: column;
     gap: 10px;
   }
-  
-  th, td {
+
+  th,
+  td {
     padding: 10px;
   }
-  
+
   .btn {
     width: 100%;
     justify-content: center;
   }
-  
+
   .actions {
     justify-content: center;
+  }
+}
+
+/* For responsive design */
+@media (max-width: 576px) {
+  .error-message {
+    font-size: 1rem;
+  }
+
+  .error-icon {
+    width: 48px;
+    height: 48px;
   }
 }
