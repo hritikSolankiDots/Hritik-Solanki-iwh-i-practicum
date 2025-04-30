@@ -1,0 +1,45 @@
+doctype html
+html
+  head
+    title= title
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='/css/style.css')
+  body
+    header.header
+      div.container.header-content
+        h1= isEdit ? 'Edit Book' : 'Add New Book'
+    
+    main.container
+      div.card
+        div.card-header
+          h2.card-title= isEdit ? 'Update Book Details' : 'Enter Book Details'
+          a.back-link(href='/')
+            svg(xmlns='http://www.w3.org/2000/svg', width='16', height='16', fill='currentColor', viewBox='0 0 16 16')
+              path(fill-rule='evenodd', d='M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z')
+            span Return to Dashboard
+        
+        div.card-body
+          form.form-container(action=isEdit ? `/update-cobj/${book.id}` : '/update-cobj', method='POST')
+            div.form-group
+              label(for='name') Book Title:
+              input(type='text', id='name', name='name', value=book.properties.name, required, placeholder='Enter book title')
+            
+            div.form-group
+              label(for='author') Author:
+              input(type='text', id='author', name='author', value=book.properties.author, required, placeholder='Enter author name')
+            
+            div.form-group
+              label(for='publicationyear') Publication Year:
+              input(type='number', id='publicationyear', name='publicationyear', value=book.properties.publicationyear, required, placeholder='Enter publication year')
+            
+            div.form-footer
+              if isEdit
+                button.btn.btn-primary(type='submit')
+                  svg(xmlns='http://www.w3.org/2000/svg', width='16', height='16', fill='currentColor', viewBox='0 0 16 16')
+                    path(d='M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z')
+                  span Update Book
+              else
+                button.btn.btn-primary(type='submit')
+                  svg(xmlns='http://www.w3.org/2000/svg', width='16', height='16', fill='currentColor', viewBox='0 0 16 16')
+                    path(d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z')
+                  span Add Book
