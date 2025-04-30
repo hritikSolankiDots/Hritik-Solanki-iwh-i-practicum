@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/css/style.css')
+  body
+    h1 Custom Objects Dashboard
+    
+    a(href='/update-cobj') Add to this table
+    
+    if customObjects && customObjects.length > 0
+      table
+        thead
+          tr
+            th Book Name
+            th Author
+            th Publication Year
+        tbody
+          each obj in customObjects
+            tr
+              td= obj.properties.name
+              td= obj.properties.author
+              td= obj.properties.publicationyear
+    else
+      p No custom objects found. Create one using the link above.
