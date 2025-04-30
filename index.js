@@ -15,6 +15,7 @@ app.use(express.json());
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
+
 // HubSpot API Configuration
 const HUBSPOT_API_KEY = process.env.HUBSPOT_API_KEY;
 const HUBSPOT_CUSTOM_OBJECT_ID = process.env.HUBSPOT_CUSTOM_OBJECT_ID;
